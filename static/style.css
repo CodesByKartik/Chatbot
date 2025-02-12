@@ -1,0 +1,86 @@
+
+body{
+    background-image: url("./utils/Download\ premium\ image\ of\ Vintage\ iPhone\ wallpaper\,\ HD\ background\ with\ faded\ architecture\ illustration\ and\ handwriting\ by\ Techi\ about\ wallpaper\,\ mobile\ wallpaper\,\ iphone\ wallpap.jpg");
+ background-color: #cccccc;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+nav{
+    background-color: red;
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #60A5FA;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.dropdown-content {
+    transform-origin: top;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#content {
+    display: none;
+    opacity: 0;
+    transform: translateY(50px); /* Initial position (below the screen) */
+    transition: transform 1s ease-out, opacity 1s ease-out; /* Slide in with opacity */
+  }
+  
+  #content.slide-in {
+    transform: translateY(0); /* Slide to the original position */
+    opacity: 1; /* Fade-in effect */
+  }
+  
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 1000;
+  }
+  
+  #preload-video {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    background: transparent;
+  }
+  
+  
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mobile-menu {
+    transition: transform 3s ease-in-out;
+}
+
+.mobile-menu.hidden {
+    transform: translateX(-100%);
+}
+
+
