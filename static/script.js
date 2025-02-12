@@ -3,6 +3,10 @@
   const mobileMenu = document.getElementById('mobile-menu');
   const menuIcon = document.querySelector('.menu-icon');
 
+const sendRequest = () =>{
+  console.log("Request sent! ")
+}
+
   mobileMenuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
       // Animate menu icon

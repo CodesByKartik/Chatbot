@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IKS Project</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
     <div id="preloader">
         <video id="preload-video" autoplay muted>
-            <source src="./utils/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+            <source src="../static/utils/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
         </video>
     </div>
 <div id="content" style="display:none;">
@@ -27,39 +27,10 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <!-- Weapons Dropdown -->
-                    <div class="relative group">
-                        <button class="nav-link flex items-center space-x-1">
-                            <span>Weapons</span>
-                        </button>
-                       
-                    </div>
-
-                    <!-- Craft Dropdown -->
-                    <div class="relative group">
-                        <button class="nav-link flex items-center space-x-1">
-                            <span>Craft</span>
-                            
-                        </button>
-                        
-                    </div>
-
-                    <!-- Engineering & Tech -->
-                    <div class="relative group">
-                        <button class="nav-link flex items-center space-x-1">
-                            <span>Engineering & Tech</span>
-                            
-                        </button>
-                        
-                    </div>
-
-                    <!-- Chatbot Dropdown -->
-                    <div class="relative group">
-                        <button class="nav-link flex items-center space-x-1">
-                            <span>Chatbot</span>
-                            
-                        </button>
-                    </div>
+                    <a href="/weapons" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-700 transition">Weapons</a>
+                    <a href="/crafts" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-700 transition">Craft</a>
+                    <a href="/EngineeringTech" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-700 transition">Engineering & Tech</a>
+                    <a href="/ChatPage" class="nav-link px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Chatbot</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -72,47 +43,22 @@
 
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <!-- Weapons Mobile -->
-                    <div class="mobile-dropdown">
-                        <button class="w-full text-left px-3 py-2 rounded-md text-white hover:bg-blue-800 transition-colors">
-                            Weapons
-                        </button>
-                       
-                    </div>
-
-                    <!-- Craft Mobile -->
-                    <div class="mobile-dropdown">
-                        <button class="w-full text-left px-3 py-2 rounded-md text-white hover:bg-blue-800 transition-colors">
-                            Craft
-                        </button>
-                     
-                    </div>
-
-                    <!-- Engineering & Tech Mobile -->
-                    <div class="mobile-dropdown">
-                        <button class="w-full text-left px-3 py-2 rounded-md text-white hover:bg-blue-800 transition-colors">
-                            Engineering & Tech
-                        </button>
-                       
-                    </div>
-                    <div class="relative group">
-                        <button class="nav-link flex items-center space-x-1">
-                            <span>Chatbot</span>
-                            
-                        </button>
-                    </div>
-                </div>
+                <div class="px-2 pt-2 pb-3 space-y-1 flex flex-col items-center">
+                    <a href="/weapons" class="w-full text-center px-3 py-2 rounded-md text-white hover:bg-blue-800 transition">Weapons</a>
+                    <a href="/crafts" class="w-full text-center px-3 py-2 rounded-md text-white hover:bg-blue-800 transition">Craft</a>
+                    <a href="/EngineeringTech" class="w-full text-center px-3 py-2 rounded-md text-white hover:bg-blue-800 transition">Engineering & Tech</a>
+                    <a href="/ChatPage" class="w-full text-center px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Chatbot</a>
                 </div>
             </div>
         </div>
     </nav>
+
     
     <!-- Hero Section -->
     <section class="container mx-auto mt-6">
         <div class="relative w-full h-64 bg-gray-300 flex justify-center items-center">
             <video id="preload-video" autoplay muted>
-                <source src="./utils/main video - Made with Clipchamp.mp4" type="video/mp4">
+                <source src="../static/utils/main video - Made with Clipchamp.mp4" type="video/mp4">
             </video>
         </div>
     </section>
@@ -155,6 +101,6 @@
         @Viraj Gavade
     </footer>
     
-   <script src="script.js"></script>
+    <script src="../static/script.js"></script>
 </body>
 </html>
