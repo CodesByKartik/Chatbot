@@ -3,19 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historical Chatbot</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Ancient Historical Oracle</title>
+    <style>
+        :root {
+            --parchment: #f4e4bc;
+            --ink: #2c1810;
+            --accent: #8b4513;
+            --border: #8b4513;
+        }
+
+        body {
+            background-color: var(--parchment);
+            color: var(--ink);
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: url('/api/placeholder/100/100');
+            background-repeat: repeat;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: var(--parchment);
+            border: 8px double var(--border);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        #chat-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid var(--border);
+            background: var(--parchment);
+            color: var(--ink);
+            font-family: 'Times New Roman', serif;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background: var(--accent);
+            color: var(--parchment);
+            border: none;
+            cursor: pointer;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #6b3410;
+        }
+
+        #response-container {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: 5px;
+            background: rgba(244, 228, 188, 0.7);
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        #answer {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        #answer p {
+            margin-bottom: 15px;
+        }
+
+        .source-text {
+            font-style: italic;
+            color: var(--accent);
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Ancient decorative elements */
+        .corner-ornament {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        .top-left { top: 10px; left: 10px; }
+        .top-right { top: 10px; right: 10px; }
+        .bottom-left { bottom: 10px; left: 10px; }
+        .bottom-right { bottom: 10px; right: 10px; }
+
+        /* Loading indicator */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .chat-container {
+                padding: 15px;
+            }
+
+            #chat-form {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="chat-container">
-        <h1>Ask a Historical Question</h1>
+        <div class="corner-ornament top-left"></div>
+        <div class="corner-ornament top-right"></div>
+        <div class="corner-ornament bottom-left"></div>
+        <div class="corner-ornament bottom-right"></div>
+        
+        <h1>Ancient Oracle of Knowledge</h1>
+        
         <form id="chat-form">
-            <input type="text" id="query" placeholder="Enter your question here" required />
-            <button type="submit">Ask</button>
+            <input type="text" id="query" placeholder="Ask the Oracle your question..." required />
+            <button type="submit">Consult Oracle</button>
         </form>
         
-        <div id="response-container">
-            <h2>Answer:</h2>
+        <div class="loading" id="loading">
+            The Oracle is consulting the ancient scrolls...
+        </div>
+        
+        <div id="response-container" style="display: none;">
+            <h2>The Oracle Speaks:</h2>
             <div id="answer"></div>
         </div>
     </div>
@@ -24,18 +177,53 @@
         document.getElementById("chat-form").addEventListener("submit", async function(event) {
             event.preventDefault();
             const query = document.getElementById("query").value;
-            const responseContainer = document.getElementById("answer");
+            const responseContainer = document.getElementById("response-container");
+            const loadingElement = document.getElementById("loading");
+            const answerElement = document.getElementById("answer");
+
+            // Function to format the response
+function formatResponse(responseText) {
+    const formattedText = responseText.split('\n').map(line => {
+        // Adding heading for numbers and formatting descriptions
+        if (line.match(/^\d+/)) {
+            return `<h2>${line}</h2>`;
+        }
+        return `<p>${line}</p>`;
+    }).join('');
+    return formattedText;
+}
+
             
-            // Fetch the chatbot response
-            const response = await fetch(`/chat?query=${encodeURIComponent(query)}`);
-            const data = await response.json();
+            // Show loading, hide previous response
+            loadingElement.style.display = "block";
+            responseContainer.style.display = "none";
             
-            if (data.error) {
-                responseContainer.innerHTML = `Error: ${data.error}`;
-            } else {
-                responseContainer.innerHTML = `<p>${data.answer}</p><p><strong>Context:</strong> ${data.context}</p><p><strong>Source:</strong> ${data.source}</p>`;
+            try {
+                // Fetch the chatbot response
+                const response = await fetch(`/chat?query=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                const responseText = data.answer;
+                const formattedResponse = formatResponse(responseText);
+                // Hide loading
+                loadingElement.style.display = "none";
+                responseContainer.style.display = "block";
+                
+                if (data.error) {
+                    answerElement.innerHTML = `<p class="error">The Oracle appears troubled: ${data.error}</p>`;
+                } else {
+                    answerElement.innerHTML = `
+                        <p>${formattedResponse}</p>
+                        <p class="source-text"><strong>From the Ancient Scrolls:</strong> ${data.context}</p>
+                        <p class="source-text"><strong>Source:</strong> Wikipedia</p>
+                    `;
+                }
+            } catch (error) {
+                loadingElement.style.display = "none";
+                responseContainer.style.display = "block";
+                answerElement.innerHTML = `<p class="error">The Oracle cannot be reached at this time. Please try again later.</p>`;
             }
         });
+        
     </script>
 </body>
 </html>
