@@ -49,7 +49,24 @@ def ask_groq(question: str) -> dict:
 
 @app.get("/", response_class=HTMLResponse)
 async def get_html(request: Request):
+    return template.TemplateResponse("index.html", {"request": request})
+
+@app.get("/weapons", response_class=HTMLResponse)
+async def get_html(request: Request):
+    return template.TemplateResponse("weapons.html", {"request": request})
+
+@app.get("/crafts", response_class=HTMLResponse)
+async def get_html(request: Request):
+    return template.TemplateResponse("crafts.html", {"request": request})
+
+@app.get("/EngineeringTech", response_class=HTMLResponse)
+async def get_html(request: Request):
+    return template.TemplateResponse("Engg&Tech.html", {"request": request})
+
+@app.get("/ChatPage", response_class=HTMLResponse)
+async def get_html(request: Request):
     return template.TemplateResponse("chat.html", {"request": request})
+
 
 @app.get("/chat", response_class=JSONResponse)
 async def chat(query: str = Query(..., description="Enter a historical question")):

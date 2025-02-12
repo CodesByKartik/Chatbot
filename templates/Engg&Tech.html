@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <nav class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3">
+                    <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200">
+                        IKS Project
+                    </span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/weapons" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-700 transition">Weapons</a>
+                    <a href="/crafts" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-700 transition">Craft</a>
+                    <a href="/EngineeringTech" class="nav-link px-4 py-2 rounded-lg hover:bg-blue-700 transition">Engineering & Tech</a>
+                    <a href="/ChatPage" class="nav-link px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Chatbot</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 flex flex-col items-center">
+                    <a href="/weapons" class="w-full text-center px-3 py-2 rounded-md text-white hover:bg-blue-800 transition">Weapons</a>
+                    <a href="/crafts" class="w-full text-center px-3 py-2 rounded-md text-white hover:bg-blue-800 transition">Craft</a>
+                    <a href="/EngineeringTech" class="w-full text-center px-3 py-2 rounded-md text-white hover:bg-blue-800 transition">Engineering & Tech</a>
+                    <a href="/ChatPage" class="w-full text-center px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Chatbot</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>This is the engg and tech page</h1>
+
+</body>
+</html>
