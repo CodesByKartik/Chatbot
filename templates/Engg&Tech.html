@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         .timeline-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+          /* Chatbot button styling */
+    #chatbot-btn {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        border-radius: 50%;
+        background-color: #1e3a8a; /* Blue color */
+        color: white;
+        padding: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
+    /* Chatbot popup styling */
+    #chatbot-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    </style>
     <title>Document</title>
+    
 </head>
 <body>
     <nav class="bg-blue-900 text-white shadow-lg">
@@ -45,7 +80,7 @@
             </div>
         </div>
     </nav>
-    <section class="relative w-full h-[500px] flex items-center justify-center bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?technology,engineering');">
+    <section class="relative w-full h-[500px] flex items-center justify-center bg-cover bg-center opacity-90" style="background-image: url('../static/utils/Engg\ and\ Tech\ Background\ image.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="relative z-10 text-center text-white px-6 md:px-12">
             <h1 class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200">
@@ -67,7 +102,7 @@
             <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <!-- Feature 1: Iron Pillar of Delhi -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Iron_pillar_Delhi_Ridwan_Siddik.jpg/400px-Iron_pillar_Delhi_Ridwan_Siddik.jpg" alt="Iron Pillar of Delhi" class="w-full h-48 object-cover">
+                    <img src="../static/utils/'Ashok Stambh' or the Iron Pillar near Qutub Minar in Delhi, India_.jpg" alt="Iron Pillar of Delhi" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-blue-900">Iron Pillar of Delhi</h3>
                         <p class="text-gray-600 mt-2">A rust-resistant iron pillar over 1600 years old, showcasing advanced metallurgy.</p>
@@ -121,64 +156,75 @@
             </div>
         </div>
     </section>
-    <section class="py-12 bg-white">
+    <section class="py-12">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-blue-900 text-center mb-12">Evolution of Engineering & Technology in Ancient India</h2>
+            <h2 class="text-4xl font-bold text-blue-900 text-center mb-12">
+                Evolution of Engineering & Technology in Ancient India
+            </h2>
     
             <div class="relative border-l-4 border-blue-900 ml-6">
+    
                 <!-- Timeline Items -->
-                <div class="timeline-item opacity-0 transform translate-y-6 transition-all duration-700" data-year="2600 BCE">
-                    <div class="mb-10 ml-8 p-6 bg-gray-100 rounded-lg shadow-lg relative">
-                        <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
-                            2600 BCE
-                        </span>
-                        <h3 class="text-2xl font-semibold text-blue-900">Indus Valley Civilization</h3>
-                        <p class="text-gray-700 mt-2">Urban planning, drainage systems, and baked brick houses showcased advanced civil engineering.</p>
-                    </div>
+                <div class="timeline-item relative mb-10 ml-8 p-6 bg-white rounded-lg shadow-lg">
+                    <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
+                        2600 BCE
+                    </span>
+                    <h3 class="text-2xl font-semibold text-blue-900">Indus Valley Civilization</h3>
+                    <p class="text-gray-700 mt-2">
+                        Advanced urban planning, drainage systems, and baked brick houses.
+                    </p>
                 </div>
     
-                <div class="timeline-item opacity-0 transform translate-y-6 transition-all duration-700" data-year="1500 BCE">
-                    <div class="mb-10 ml-8 p-6 bg-gray-100 rounded-lg shadow-lg relative">
-                        <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
-                            1500 BCE
-                        </span>
-                        <h3 class="text-2xl font-semibold text-blue-900">Vedic Mathematics & Astronomy</h3>
-                        <p class="text-gray-700 mt-2">Vedas documented complex mathematical concepts, planetary motion, and time calculations.</p>
-                    </div>
+                <div class="timeline-item relative mb-10 ml-8 p-6 bg-white rounded-lg shadow-lg">
+                    <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
+                        1500 BCE
+                    </span>
+                    <h3 class="text-2xl font-semibold text-blue-900">Vedic Mathematics & Astronomy</h3>
+                    <p class="text-gray-700 mt-2">
+                        Early documentation of mathematical formulas and planetary motion.
+                    </p>
                 </div>
     
-                <div class="timeline-item opacity-0 transform translate-y-6 transition-all duration-700" data-year="300 BCE">
-                    <div class="mb-10 ml-8 p-6 bg-gray-100 rounded-lg shadow-lg relative">
-                        <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
-                            300 BCE
-                        </span>
-                        <h3 class="text-2xl font-semibold text-blue-900">Iron Pillar & Metallurgy</h3>
-                        <p class="text-gray-700 mt-2">Production of rust-resistant iron and zinc extraction techniques revolutionized metallurgy.</p>
-                    </div>
+                <div class="timeline-item relative mb-10 ml-8 p-6 bg-white rounded-lg shadow-lg">
+                    <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
+                        300 BCE
+                    </span>
+                    <h3 class="text-2xl font-semibold text-blue-900">Iron Pillar & Metallurgy</h3>
+                    <p class="text-gray-700 mt-2">
+                        Rust-resistant iron and early zinc extraction techniques.
+                    </p>
                 </div>
     
-                <div class="timeline-item opacity-0 transform translate-y-6 transition-all duration-700" data-year="500 CE">
-                    <div class="mb-10 ml-8 p-6 bg-gray-100 rounded-lg shadow-lg relative">
-                        <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
-                            500 CE
-                        </span>
-                        <h3 class="text-2xl font-semibold text-blue-900">Ayurveda & Surgical Instruments</h3>
-                        <p class="text-gray-700 mt-2">Sushruta's medical texts described surgical tools and advanced healing practices.</p>
-                    </div>
+                <div class="timeline-item relative mb-10 ml-8 p-6 bg-white rounded-lg shadow-lg">
+                    <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
+                        500 CE
+                    </span>
+                    <h3 class="text-2xl font-semibold text-blue-900">Ayurveda & Surgical Instruments</h3>
+                    <p class="text-gray-700 mt-2">
+                        Sushruta’s contributions to surgery and medical instruments.
+                    </p>
                 </div>
     
-                <div class="timeline-item opacity-0 transform translate-y-6 transition-all duration-700" data-year="1000 CE">
-                    <div class="mb-10 ml-8 p-6 bg-gray-100 rounded-lg shadow-lg relative">
-                        <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
-                            1000 CE
-                        </span>
-                        <h3 class="text-2xl font-semibold text-blue-900">Temple Architecture & Mechanics</h3>
-                        <p class="text-gray-700 mt-2">Temples like Brihadeeswarar showcased advanced structural design and interlocking stone systems.</p>
-                    </div>
+                <div class="timeline-item relative mb-10 ml-8 p-6 bg-white rounded-lg shadow-lg">
+                    <span class="absolute top-5 left-[-2rem] text-xl font-semibold bg-blue-900 text-white px-4 py-1 rounded-lg">
+                        1000 CE
+                    </span>
+                    <h3 class="text-2xl font-semibold text-blue-900">Temple Architecture & Mechanics</h3>
+                    <p class="text-gray-700 mt-2">
+                        Advanced structural engineering in temples like Brihadeeswarar.
+                    </p>
                 </div>
+    
             </div>
         </div>
     </section>
+
+    
+    
+    
+    
+   
+    
     
     
     <footer class="bg-blue-900 text-white text-center p-4 mt-10">
@@ -186,7 +232,18 @@
         @Viraj Gavade
     </footer>
     
-<script>   document.getElementById('mobile-menu-button').addEventListener('click', function() {
+<script>   
+  
+    document.addEventListener("scroll", function () {
+            const timelineItems = document.querySelectorAll(".timeline-item");
+            timelineItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    item.classList.add("show");
+                }
+            });
+        });
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
     document.addEventListener("scroll", function () {
             const timelineItems = document.querySelectorAll(".timeline-item");
@@ -199,6 +256,8 @@
                 }
             });
         });
-});</script>
+});
+
+</script>
 </body>
 </html>
