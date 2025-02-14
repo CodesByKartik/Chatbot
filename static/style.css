@@ -1,9 +1,9 @@
 
 body{
-    background-image: url("./utils/Download\ premium\ image\ of\ Vintage\ iPhone\ wallpaper\,\ HD\ background\ with\ faded\ architecture\ illustration\ and\ handwriting\ by\ Techi\ about\ wallpaper\,\ mobile\ wallpaper\,\ iphone\ wallpap.jpg");
- background-color: #cccccc;
+    background-image: url("../static/utils/Background_Tab.jpeg");
+    background-color: #cccccc;
  background-repeat: no-repeat;
- background-size: cover;
+ background-size:cover
 }
 
 
