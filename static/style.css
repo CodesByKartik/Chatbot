@@ -3,7 +3,8 @@ body{
     background-image: url("../static/utils/Background_Tab.jpeg");
     background-color: #cccccc;
  background-repeat: no-repeat;
- background-size:cover}
+ background-size:cover
+}
 
 
 .nav-link {
