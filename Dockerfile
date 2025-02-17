@@ -1,19 +1,11 @@
 # Use an official Python image as the base
 FROM python:3.10
 
+# Install build dependencies
+RUN apt-get update && apt-get install -y build-essential python3-dev
+
 # Set the working directory
 WORKDIR /app
-
-# Install system dependencies (optional but might be necessary for some packages)
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libssl-dev \
-    libffi-dev \
-    python3-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-# Upgrade pip to ensure the latest version is used
-RUN pip install --upgrade pip
 
 # Copy all files to the container
 COPY . .
