@@ -1,17 +1,25 @@
 # Use an official Python image as the base
 FROM python:3.10
 
-# Install build dependencies
-RUN apt-get update && apt-get install -y build-essential python3-dev
-
 # Set the working directory
 WORKDIR /app
 
-# Copy all files to the container
-COPY . .
+# Install system dependencies required for building some Python packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    python3-dev \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
+# Copy the requirements.txt file first to leverage Docker cache
+COPY requirements.txt .
+
+# Install dependencies individually to troubleshoot installation issues
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code to the container
+COPY . .
 
 # Expose the default FastAPI port
 EXPOSE 8000
