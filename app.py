@@ -117,7 +117,7 @@ async def get_html(request: Request):
 async def get_html(request: Request):
     return template.TemplateResponse("crafts.html", {"request": request})
 
-@app.get("/engg-tech", response_class=HTMLResponse)
+@app.get("/EngineeringTech", response_class=HTMLResponse)
 async def get_html(request: Request):
     return template.TemplateResponse("Engg&Tech.html", {"request": request})
 
