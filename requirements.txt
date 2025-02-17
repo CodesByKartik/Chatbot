@@ -74,7 +74,7 @@ psutil==5.8.0
 pure_eval==0.2.0
 pycparser==2.21
 pydantic==1.8.2
-pydantic_core==1.8.0
+pydantic_core==2.0.0
 Pygments==2.10.0
 python-dateutil==2.8.2
 python-dotenv==0.19.1
