@@ -21,7 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "main.py"
+      "dest": "app.py"
     }
   ]
 }
